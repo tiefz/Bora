@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bora</string>
+    <string name="tv_horario_calculado">O último horário de saída calculado foi:</string>
+    <string name="calcular">Calcular</string>
 </resources>
