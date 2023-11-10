@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="Calcular"
+            android:text="@string/calcular"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="30sp"
@@ -39,6 +39,29 @@
             app:layout_constraintEnd_toEndOf="@id/ib_clock_start"
             app:layout_constraintStart_toStartOf="@id/ib_clock_start"
             app:layout_constraintTop_toTopOf="@id/ib_clock_start" />
+
+        <TextView
+            android:id="@+id/tv_calculate_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/tv_horario_calculado"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ib_clock_start" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_calculate_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

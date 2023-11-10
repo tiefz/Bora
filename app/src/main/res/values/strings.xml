@@ -4,4 +4,6 @@
     <string name="start_time">00:00</string>
     <string name="description_cancel_button">Botão cancelar</string>
     <string name="description_start_button">Botão start</string>
+    <string name="tv_horario_calculado">O último horário de saída calculado foi:</string>
+    <string name="calcular">Calcular</string>
 </resources>
