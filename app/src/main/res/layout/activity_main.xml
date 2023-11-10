@@ -10,37 +10,35 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:background="@color/bg_cinza"
+        tools:context=".presentation.ui.MainActivity">
 
-        <TextView
-            android:id="@+id/tv_hello"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
+        <ImageButton
+            android:id="@+id/ib_clock_start"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:background="@drawable/button_circle"
+            android:scaleType="fitCenter"
+            android:src="@drawable/clockmark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/bt_botao1"
+        <TextView
+            android:id="@+id/tv_calculate_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/bt_botao2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="botao2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bt_botao1" />
+            android:fontFamily="sans-serif-black"
+            android:text="Calcular"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ib_clock_start"
+            app:layout_constraintEnd_toEndOf="@id/ib_clock_start"
+            app:layout_constraintStart_toStartOf="@id/ib_clock_start"
+            app:layout_constraintTop_toTopOf="@id/ib_clock_start" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
