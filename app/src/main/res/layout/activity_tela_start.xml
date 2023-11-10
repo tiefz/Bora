@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/ib_start_calculate" />
+            app:layout_constraintBottom_toTopOf="@id/ib_start_calculate" />
 
         <EditText
             android:id="@+id/et_input_hour"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_title_start"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/ib_start_calculate"
+            app:layout_constraintBottom_toTopOf="@id/ib_start_calculate"
 
             />
 
@@ -50,10 +50,10 @@
             android:id="@+id/ib_start_calculate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/bg_cinza"
             android:contentDescription="@string/description_start_button"
             android:src="@drawable/image_start_calculate"
-            android:background="transparent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_start"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_start"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
