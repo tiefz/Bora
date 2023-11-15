@@ -16,6 +16,9 @@
             android:name=".presentation.ui.TelaEntrada"
             android:exported="false" />
         <activity
+            android:name=".presentation.ui.TelaAlmocoInicial"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.MainActivity"
             android:exported="true" >
             <intent-filter>
