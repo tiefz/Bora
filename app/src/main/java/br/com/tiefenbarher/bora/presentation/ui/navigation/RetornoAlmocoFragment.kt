@@ -7,22 +7,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import br.com.tiefenbarher.bora.databinding.FragmentAlmocoBinding
+import br.com.tiefenbarher.bora.databinding.FragmentRetornoAlmocoBinding
 
-class AlmocoFragment : Fragment() {
-    private var _binding: FragmentAlmocoBinding? = null
+class RetornoAlmocoFragment : Fragment() {
+    private var _binding: FragmentRetornoAlmocoBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAlmocoBinding.inflate(inflater, container, false)
+        _binding = FragmentRetornoAlmocoBinding.inflate(inflater, container, false)
         val view = binding.root
 
         binding.apply {
-            ibLunchStart.setOnClickListener {
-                val action = AlmocoFragmentDirections
-                    .actionAlmocoFragmentToRetornoAlmoco()
+            ibLunchEnd.setOnClickListener {
+                val action = RetornoAlmocoFragmentDirections
+                    .actionRetornoAlmocoToHomeFragment()
 
                 view.findNavController().navigate(action)
             }

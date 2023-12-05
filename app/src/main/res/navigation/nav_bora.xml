@@ -28,8 +28,21 @@
         android:name="br.com.tiefenbarher.bora.presentation.ui.navigation.AlmocoFragment"
         android:label="fragment_almoco"
         tools:layout="@layout/fragment_almoco">
+
         <action
-            android:id="@+id/action_almocoFragment_to_homeFragment"
+            android:id="@+id/action_almocoFragment_to_retornoAlmoco"
+            app:destination="@id/retornoAlmoco" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/retornoAlmoco"
+        android:name="br.com.tiefenbarher.bora.presentation.ui.navigation.RetornoAlmocoFragment"
+        android:label="fragment_retorno_almoco"
+        tools:layout="@layout/fragment_retorno_almoco">
+
+        <action
+            android:id="@+id/action_retornoAlmoco_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
 </navigation>
