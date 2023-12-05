@@ -5,11 +5,12 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import br.com.tiefenbarher.bora.data.model.Interval
+import br.com.tiefenbarher.bora.data.model.LocalShift
 
 @Dao
 interface BoraDao {
     @Insert
-    fun saveInterval(interval: Interval)
+    fun saveShift(shift: LocalShift)
 
     @Query("SELECT * FROM interval")
     fun getAllIntervals(): List<Interval>
