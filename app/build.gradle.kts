@@ -66,4 +66,6 @@ dependencies {
     testImplementation("androidx.room:room-testing:$room_version")
     //Dependence Injection Koin
     implementation("io.insert-koin:koin-android:$koin_android_version")
+    //ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
 }
