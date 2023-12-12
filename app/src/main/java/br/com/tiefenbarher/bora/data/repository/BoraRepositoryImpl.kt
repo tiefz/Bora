@@ -7,7 +7,7 @@ import br.com.tiefenbarher.bora.domain.model.repository.BoraRepository
 class BoraRepositoryImpl(
     private val dao: BoraDao
 ) : BoraRepository {
-    override fun saveShift(shift: AppShift) {
+    override suspend fun saveShift(shift: AppShift) {
         dao.saveShift(shift.fromAppModel())
     }
 }

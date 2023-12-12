@@ -45,7 +45,7 @@ android {
 dependencies {
 
     val nav_version = "2.5.3"
-    val room_version = "2.4.1"
+    val room_version = "2.6.1"
     val koin_android_version = "3.4.3"
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
