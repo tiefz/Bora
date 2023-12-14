@@ -13,6 +13,11 @@ interface BoraDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveShift(shift: LocalShift)
 
+    @Query("SELECT * FROM shift")
+    fun getAllShifts(): List<LocalShift>
+
+    //todo - getShiftById
+
     @Query("SELECT * FROM interval")
     fun getAllIntervals(): List<Interval>
 

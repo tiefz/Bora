@@ -32,17 +32,6 @@ class HomeFragment : Fragment() {
         binding.viewmodel = viewModel
         val view = binding.root
 
-
-        // Inflate the layout for this fragment
-
-//        fun saveInterval(dao: BoraDao) {
-//            val interval = dao.getIntervalById(3)
-//            Log.i(
-//                "TesteBanco",
-//                "Hora de inicio: ${interval.start} - hora de termino: ${interval.end}"
-//            )
-//        }
-
         binding.apply {
             ibClockStart.setOnClickListener {
                 val action = HomeFragmentDirections

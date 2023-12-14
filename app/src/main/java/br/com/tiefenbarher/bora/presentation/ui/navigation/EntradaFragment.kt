@@ -1,12 +1,15 @@
 package br.com.tiefenbarher.bora.presentation.ui.navigation
 
+import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TimePicker
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import br.com.tiefenbarher.bora.databinding.FragmentEntradaBinding
+import java.util.Calendar
 
 class EntradaFragment : Fragment() {
 
@@ -20,11 +23,28 @@ class EntradaFragment : Fragment() {
         _binding = FragmentEntradaBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        val timePicker: TimePickerDialog
+        val currentTime = Calendar.getInstance()
+        val hour = currentTime.get(Calendar.HOUR_OF_DAY)
+        val minute = currentTime.get(Calendar.MINUTE)
+
+        timePicker =
+            TimePickerDialog(requireContext(), object : TimePickerDialog.OnTimeSetListener {
+                override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+                    binding.tvInputHour.setText(String.format("%d:%d", hourOfDay, minute))
+                }
+            }, hour, minute, true)
+
         binding.apply {
             ibStartCalculate.setOnClickListener {
-                val action = EntradaFragmentDirections
-                    .actionEntradaFragmentToAlmocoFragment()
-                view.findNavController().navigate(action)
+                Log.i("Relogio", "Hora: $hour - Minutos: $minute")
+
+//                val action = EntradaFragmentDirections
+//                    .actionEntradaFragmentToAlmocoFragment()
+//                view.findNavController().navigate(action)
+            }
+            tvInputHour.setOnClickListener {
+                timePicker.show()
             }
         }
 

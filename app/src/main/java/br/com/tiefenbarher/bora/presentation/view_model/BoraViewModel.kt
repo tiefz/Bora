@@ -16,5 +16,11 @@ class BoraViewModel(
         }
     }
 
+//    fun getAllShifts(): List<AppShift> {
+//        viewModelScope.launch {
+//            return repository.getAllShifts()
+//        }
+//    }
+
     var horario = "00:00"
 }
