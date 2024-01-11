@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import br.com.tiefenbarher.bora.data.model.Interval
 import br.com.tiefenbarher.bora.data.model.LocalShift
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BoraDao {
@@ -14,7 +15,7 @@ interface BoraDao {
     suspend fun saveShift(shift: LocalShift)
 
     @Query("SELECT * FROM shift")
-    fun getAllShifts(): List<LocalShift>
+    fun getAllShifts(): Flow<List<LocalShift>>
 
     //todo - getShiftById
 

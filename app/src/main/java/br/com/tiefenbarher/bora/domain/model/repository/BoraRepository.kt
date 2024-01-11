@@ -1,8 +1,10 @@
 package br.com.tiefenbarher.bora.domain.model.repository
 
+import br.com.tiefenbarher.bora.data.model.LocalShift
 import br.com.tiefenbarher.bora.domain.model.AppShift
+import kotlinx.coroutines.flow.Flow
 
 interface BoraRepository {
     suspend fun saveShift(shift: AppShift)
-    suspend fun getAllShifts(): List<AppShift>
+    fun getAllShifts(): Flow<List<LocalShift>>
 }

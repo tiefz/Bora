@@ -1,15 +1,18 @@
 package br.com.tiefenbarher.bora.presentation.ui.navigation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.coroutineScope
 import androidx.navigation.findNavController
 import br.com.tiefenbarher.bora.data.dao.BoraDao
 import br.com.tiefenbarher.bora.databinding.FragmentHomeBinding
 import br.com.tiefenbarher.bora.domain.model.AppShift
 import br.com.tiefenbarher.bora.presentation.view_model.BoraViewModel
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.LocalDate
@@ -52,6 +55,13 @@ class HomeFragment : Fragment() {
                         isFinished = false
                     )
                 )
+                lifecycle.coroutineScope.launch {
+                    viewModel.getAllShifts().collect() {
+                        if (it.size != null)
+                            Log.i("Teste Room", it.size.toString())
+                    }
+                }
+
                 view.findNavController().navigate(action)
             }
         }

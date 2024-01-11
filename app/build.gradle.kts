@@ -64,8 +64,11 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     testImplementation("androidx.room:room-testing:$room_version")
+    implementation("androidx.room:room-runtime:2.2.5")
     //Dependence Injection Koin
     implementation("io.insert-koin:koin-android:$koin_android_version")
     //ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    //Livedata
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 }

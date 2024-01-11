@@ -1,8 +1,10 @@
 package br.com.tiefenbarher.bora.data.repository
 
 import br.com.tiefenbarher.bora.data.dao.BoraDao
+import br.com.tiefenbarher.bora.data.model.LocalShift
 import br.com.tiefenbarher.bora.domain.model.AppShift
 import br.com.tiefenbarher.bora.domain.model.repository.BoraRepository
+import kotlinx.coroutines.flow.Flow
 
 class BoraRepositoryImpl(
     private val dao: BoraDao
@@ -11,19 +13,7 @@ class BoraRepositoryImpl(
         dao.saveShift(shift.fromAppModel())
     }
 
-    override suspend fun getAllShifts(): List<AppShift> {
-        val localShiftList = dao.getAllShifts()
-        val appShiftList = localShiftList.map { shift ->
-            AppShift(
-                id = shift.id,
-                start = shift.start,
-                lunch = shift.lunch,
-                lunchEnd = shift.lunchEnd,
-                pauses = shift.pauses,
-                end = shift.end,
-                isFinished = shift.isFinished
-            )
-        }
-        return appShiftList
+    override fun getAllShifts(): Flow<List<LocalShift>> {
+        return dao.getAllShifts()
     }
 }
