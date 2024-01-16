@@ -16,4 +16,8 @@ class BoraRepositoryImpl(
     override fun getAllShifts(): Flow<List<LocalShift>> {
         return dao.getAllShifts()
     }
+
+    override suspend fun deleteShift(shift: AppShift) {
+        dao.deleteShift(shift.fromAppModel())
+    }
 }

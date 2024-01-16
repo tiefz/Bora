@@ -8,13 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TimePicker
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import br.com.tiefenbarher.bora.databinding.FragmentEntradaBinding
+import br.com.tiefenbarher.bora.presentation.view_model.BoraViewModel
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
 class EntradaFragment : Fragment() {
 
     private var _binding: FragmentEntradaBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: BoraViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +28,13 @@ class EntradaFragment : Fragment() {
     ): View? {
         _binding = FragmentEntradaBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        lifecycleScope.launch {
+            viewModel.currentShift.collect { currentShift ->
+                binding.tvInputHour.text =
+                    currentShift.start.format(DateTimeFormatter.ofPattern("HH:mm"))
+            }
+        }
 
         val timePicker: TimePickerDialog
         val currentTime = Calendar.getInstance()

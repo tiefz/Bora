@@ -1,7 +1,6 @@
 package br.com.tiefenbarher.bora.presentation.ui.navigation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +34,20 @@ class HomeFragment : Fragment() {
         binding.viewmodel = viewModel
         val view = binding.root
 
+        lifecycle.coroutineScope.launch {
+            viewModel.getAllShifts().collect() { shiftList ->
+                val firstShift = shiftList.first()
+                if (!firstShift.isFinished) {
+                    viewModel.setCurrentShift(firstShift.toAppModel())
+                    val action = HomeFragmentDirections
+                        .actionHomeFragmentToEntradaFragment()
+                    view.findNavController().navigate(action)
+                } else {
+                    viewModel.deleteShift(firstShift.toAppModel())
+                }
+            }
+        }
+
         binding.apply {
             ibClockStart.setOnClickListener {
                 val action = HomeFragmentDirections
@@ -55,13 +68,6 @@ class HomeFragment : Fragment() {
                         isFinished = false
                     )
                 )
-                lifecycle.coroutineScope.launch {
-                    viewModel.getAllShifts().collect() {
-                        if (it.size != null)
-                            Log.i("Teste Room", it.size.toString())
-                    }
-                }
-
                 view.findNavController().navigate(action)
             }
         }
