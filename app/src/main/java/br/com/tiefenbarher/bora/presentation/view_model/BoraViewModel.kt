@@ -30,7 +30,7 @@ class BoraViewModel(
     fun getAllShifts(): Flow<List<LocalShift>> = repository.getAllShifts()
 
     var horario = "00:00"
-    private val _currentShift = MutableStateFlow<AppShift>(
+    private val _currentShift = MutableStateFlow(
         AppShift(
             0L, LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now(),
             listOf(), LocalDateTime.now(), false

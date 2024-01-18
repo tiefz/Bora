@@ -1,6 +1,7 @@
 package br.com.tiefenbarher.bora.presentation.ui.navigation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import br.com.tiefenbarher.bora.domain.model.AppShift
 import br.com.tiefenbarher.bora.presentation.view_model.BoraViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -22,7 +23,7 @@ import java.time.format.DateTimeFormatter
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val viewModel: BoraViewModel by viewModel()
+    private val viewModel: BoraViewModel by activityViewModel()
     private val binding get() = _binding!!
     private val dao: BoraDao by inject()
 
@@ -39,6 +40,10 @@ class HomeFragment : Fragment() {
                 val firstShift = shiftList.first()
                 if (!firstShift.isFinished) {
                     viewModel.setCurrentShift(firstShift.toAppModel())
+                    Log.i(
+                        "TempoShift",
+                        "Viewmodel primeira atualizaçao do valor: ${viewModel.currentShift.value}"
+                    )
                     val action = HomeFragmentDirections
                         .actionHomeFragmentToEntradaFragment()
                     view.findNavController().navigate(action)
