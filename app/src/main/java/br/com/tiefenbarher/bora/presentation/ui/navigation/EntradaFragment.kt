@@ -61,25 +61,23 @@ class EntradaFragment : Fragment() {
 
         binding.apply {
             ibStartCalculate.setOnClickListener {
-                Log.i("Relogio", "Hora: $hour - Minutos: $minute")
 
                 val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
                 val localTime = LocalTime.parse(binding.tvInputHour.text, timeFormatter)
                 val currentDate = LocalDateTime.now().toLocalDate()
                 val localDateTime = LocalDateTime.of(currentDate, localTime)
-
-                viewModel.setCurrentShift(
-                    AppShift(
-                        id = viewModel.currentShift.value.id,
-                        start = localDateTime,
-                        lunch = viewModel.currentShift.value.lunch,
-                        lunchEnd = viewModel.currentShift.value.lunchEnd,
-                        pauses = viewModel.currentShift.value.pauses,
-                        end = viewModel.currentShift.value.end,
-                        isFinished = viewModel.currentShift.value.isFinished
-                    )
+                val localCurrentShift = AppShift(
+                    id = viewModel.currentShift.value.id,
+                    start = localDateTime,
+                    lunch = viewModel.currentShift.value.lunch,
+                    lunchEnd = viewModel.currentShift.value.lunchEnd,
+                    pauses = viewModel.currentShift.value.pauses,
+                    end = viewModel.currentShift.value.end,
+                    isFinished = viewModel.currentShift.value.isFinished
                 )
-                viewModel.saveShift(viewModel.currentShift.value)
+
+                viewModel.setCurrentShift(localCurrentShift)
+                viewModel.saveShift(localCurrentShift)
                 val action = EntradaFragmentDirections
                     .actionEntradaFragmentToAlmocoFragment()
                 view.findNavController().navigate(action)

@@ -37,18 +37,20 @@ class HomeFragment : Fragment() {
 
         lifecycle.coroutineScope.launch {
             viewModel.getAllShifts().collect() { shiftList ->
-                val firstShift = shiftList.first()
-                if (!firstShift.isFinished) {
-                    viewModel.setCurrentShift(firstShift.toAppModel())
-                    Log.i(
-                        "TempoShift",
-                        "Viewmodel primeira atualizaçao do valor: ${viewModel.currentShift.value}"
-                    )
-                    val action = HomeFragmentDirections
-                        .actionHomeFragmentToEntradaFragment()
-                    view.findNavController().navigate(action)
-                } else {
-                    viewModel.deleteShift(firstShift.toAppModel())
+                if (shiftList.isNotEmpty()) {
+                    val firstShift = shiftList.first()
+                    if (!firstShift.isFinished) {
+                        viewModel.setCurrentShift(firstShift.toAppModel())
+                        Log.i(
+                            "TempoShift",
+                            "Viewmodel primeira atualizaçao do valor: ${viewModel.currentShift.value}"
+                        )
+                        val action = HomeFragmentDirections
+                            .actionHomeFragmentToEntradaFragment()
+                        view.findNavController().navigate(action)
+                    } else {
+                        viewModel.deleteShift(firstShift.toAppModel())
+                    }
                 }
             }
         }
