@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface BoraRepository {
     suspend fun saveShift(shift: AppShift)
+    suspend fun updateShift(shift: AppShift)
     fun getAllShifts(): Flow<List<LocalShift>>
     suspend fun deleteShift(shift: AppShift)
 }

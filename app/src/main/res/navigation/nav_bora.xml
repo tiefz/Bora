@@ -29,7 +29,11 @@
         android:label="fragment_almoco"
         tools:layout="@layout/fragment_almoco">
         <action
-            android:id="@+id/action_almocoFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_almocoFragment_to_retornoFragment"
+            app:destination="@id/retornoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/retornoFragment"
+        android:name="br.com.tiefenbarher.bora.presentation.ui.navigation.RetornoFragment"
+        android:label="RetornoFragment" />
 </navigation>

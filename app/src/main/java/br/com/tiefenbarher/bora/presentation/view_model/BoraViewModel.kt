@@ -22,7 +22,7 @@ class BoraViewModel(
         fetchShifts()
     }
 
-    fun saveShift(shift: AppShift) {
+    fun updateShift(shift: AppShift) {
         viewModelScope.launch {
             repository.saveShift(shift)
         }
@@ -37,7 +37,7 @@ class BoraViewModel(
     var shiftList = mutableListOf<LocalShift>()
     //fun getAllShifts(): Flow<List<LocalShift>> = repository.getAllShifts()
 
-    private fun fetchShifts() {
+    fun fetchShifts() {
         viewModelScope.launch {
             repository.getAllShifts().flowOn(Dispatchers.IO)
                 .catch { e ->

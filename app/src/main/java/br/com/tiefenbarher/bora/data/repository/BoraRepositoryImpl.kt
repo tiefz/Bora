@@ -13,6 +13,10 @@ class BoraRepositoryImpl(
         dao.saveShift(shift.fromAppModel())
     }
 
+    override suspend fun updateShift(shift: AppShift) {
+        dao.updateShift(shift.fromAppModel())
+    }
+
     override fun getAllShifts(): Flow<List<LocalShift>> {
         return dao.getAllShifts()
     }

@@ -4,7 +4,7 @@ import br.com.tiefenbarher.bora.data.model.LocalShift
 import java.time.LocalDateTime
 
 data class AppShift(
-    val id: Long = 0,
+    val id: Long,
     val start: LocalDateTime,
     val lunch: LocalDateTime,
     val lunchEnd: LocalDateTime,

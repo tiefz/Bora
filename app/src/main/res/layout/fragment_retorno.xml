@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.navigation.AlmocoFragment">
+        tools:context=".presentation.ui.navigation.RetornoFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:background="@color/bg_cinza">
 
             <ImageButton
-                android:id="@+id/ib_lunch_start"
+                android:id="@+id/ib_lunch_end"
                 android:layout_width="450dp"
                 android:layout_height="100dp"
                 android:background="@color/bg_cinza"
@@ -31,21 +31,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_title_tela_almoco_inicial"
+                android:id="@+id/tv_title_tela_almoco_final"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
-                android:text="Saída para almoço:"
+                android:text="Volta do almoço:"
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/ib_lunch_start"
+                app:layout_constraintBottom_toTopOf="@+id/ib_lunch_end"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_time_tela_almoco_inicial"
+                android:id="@+id/tv_time_tela_almoco_final"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
@@ -70,13 +70,13 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
-                android:id="@+id/bt_navigate_retorno"
+                android:id="@+id/bt_navigate_end"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ib_lunch_start"
+                app:layout_constraintTop_toBottomOf="@id/ib_lunch_end"
                 app:srcCompat="@drawable/baseline_dining_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

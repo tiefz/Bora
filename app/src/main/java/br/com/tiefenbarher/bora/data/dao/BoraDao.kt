@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import br.com.tiefenbarher.bora.data.model.Interval
 import br.com.tiefenbarher.bora.data.model.LocalShift
 import kotlinx.coroutines.flow.Flow
@@ -13,6 +14,9 @@ import kotlinx.coroutines.flow.Flow
 interface BoraDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveShift(shift: LocalShift)
+
+    @Update
+    suspend fun updateShift(shift: LocalShift)
 
     @Query("SELECT * FROM shift")
     fun getAllShifts(): Flow<List<LocalShift>>

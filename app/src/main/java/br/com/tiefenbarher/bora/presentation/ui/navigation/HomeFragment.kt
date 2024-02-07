@@ -64,6 +64,7 @@ class HomeFragment : Fragment() {
                 lifecycleScope.launch {
                     repository.saveShift(
                         AppShift(
+                            id = 0,
                             start = formattedTime,
                             end = formattedTime,
                             lunch = formattedTime,
