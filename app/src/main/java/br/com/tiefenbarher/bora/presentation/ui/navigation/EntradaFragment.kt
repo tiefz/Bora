@@ -38,8 +38,6 @@ class EntradaFragment : Fragment() {
             "Viewmodel segunda atualizaçao do valor: ${viewModel.currentShift.value}"
         )
 
-        viewModel.fetchShifts()
-
         lifecycleScope.launch {
             viewModel.currentShift.collect { currentShift ->
                 Log.i("TempoShift", "currentshift do viewmodel = ${currentShift.id}")
@@ -56,7 +54,15 @@ class EntradaFragment : Fragment() {
         timePicker =
             TimePickerDialog(requireContext(), object : TimePickerDialog.OnTimeSetListener {
                 override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-                    binding.tvInputHour.text = String.format("%d:%d", hourOfDay, minute)
+                    var hourFormatted = "" + hourOfDay
+                    if (hourOfDay < 10) {
+                        hourFormatted = "0$hourFormatted"
+                    }
+                    var minuteFormatted = "" + minute
+                    if (hourOfDay < 10) {
+                        minuteFormatted = "0$minuteFormatted"
+                    }
+                    binding.tvInputHour.text = "$hourFormatted:$minuteFormatted"
                 }
             }, hour, minute, true)
 

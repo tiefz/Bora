@@ -51,7 +51,15 @@ class AlmocoFragment : Fragment() {
         timePicker =
             TimePickerDialog(requireContext(), object : TimePickerDialog.OnTimeSetListener {
                 override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-                    binding.tvTimeTelaAlmocoInicial.text = String.format("%d:%d", hourOfDay, minute)
+                    var hourFormatted = "" + hourOfDay
+                    if (hourOfDay < 10) {
+                        hourFormatted = "0$hourFormatted"
+                    }
+                    var minuteFormatted = "" + minute
+                    if (hourOfDay < 10) {
+                        minuteFormatted = "0$minuteFormatted"
+                    }
+                    binding.tvTimeTelaAlmocoInicial.text = "$hourFormatted:$minuteFormatted"
                 }
             }, hour, minute, true)
 

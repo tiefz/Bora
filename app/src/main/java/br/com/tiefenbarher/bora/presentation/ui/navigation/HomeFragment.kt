@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import br.com.tiefenbarher.bora.databinding.FragmentHomeBinding
@@ -35,21 +36,23 @@ class HomeFragment : Fragment() {
         binding.viewmodel = viewModel
         val view = binding.root
 
-        if (viewModel.shiftList.isNotEmpty()) {
-            val firstShift = viewModel.shiftList.first()
-            if (!firstShift.isFinished) {
-                viewModel.setCurrentShift(firstShift.toAppModel())
-                Log.i(
-                    "TempoShift",
-                    "Viewmodel primeira atualizaçao do valor: ${viewModel.currentShift.value}"
-                )
-                val action = HomeFragmentDirections
-                    .actionHomeFragmentToEntradaFragment()
-                view.findNavController().navigate(action)
-            } else {
-                viewModel.deleteShift(firstShift.toAppModel())
+        viewModel.shifts.observe(viewLifecycleOwner, Observer { shifts ->
+            if (shifts.isNotEmpty()) {
+                val firstShift = shifts.first()
+                if (!firstShift.isFinished) {
+                    viewModel.setCurrentShift(firstShift.toAppModel())
+                    Log.i(
+                        "TempoShift",
+                        "Viewmodel primeira atualizaçao do valor: ${viewModel.currentShift.value}"
+                    )
+                    val action = HomeFragmentDirections
+                        .actionHomeFragmentToEntradaFragment()
+                    view.findNavController().navigate(action)
+                } else {
+                    viewModel.deleteShift(firstShift.toAppModel())
+                }
             }
-        }
+        })
 
         binding.apply {
             ibClockStart.setOnClickListener {
@@ -64,7 +67,7 @@ class HomeFragment : Fragment() {
                 lifecycleScope.launch {
                     repository.saveShift(
                         AppShift(
-                            id = 0,
+                            id = 1,
                             start = formattedTime,
                             end = formattedTime,
                             lunch = formattedTime,
