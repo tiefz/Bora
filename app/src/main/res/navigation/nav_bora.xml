@@ -35,5 +35,28 @@
     <fragment
         android:id="@+id/retornoFragment"
         android:name="br.com.tiefenbarher.bora.presentation.ui.navigation.RetornoFragment"
-        android:label="RetornoFragment" />
+        android:label="RetornoFragment"
+        tools:layout="@layout/fragment_retorno">
+        <action
+            android:id="@+id/action_retornoFragment_to_saidaFragment"
+            app:destination="@id/saidaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saidaFragment"
+        android:name="br.com.tiefenbarher.bora.presentation.ui.navigation.SaidaFragment"
+        android:label="fragment_saida"
+        tools:layout="@layout/fragment_saida">
+        <action
+            android:id="@+id/action_saidaFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_saidaFragment_to_entradaFragment"
+            app:destination="@id/entradaFragment" />
+        <action
+            android:id="@+id/action_saidaFragment_to_almocoFragment"
+            app:destination="@id/almocoFragment" />
+        <action
+            android:id="@+id/action_saidaFragment_to_retornoFragment"
+            app:destination="@id/retornoFragment" />
+    </fragment>
 </navigation>

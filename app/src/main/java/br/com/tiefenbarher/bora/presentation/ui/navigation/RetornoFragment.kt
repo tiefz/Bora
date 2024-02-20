@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TimePicker
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import br.com.tiefenbarher.bora.databinding.FragmentRetornoBinding
 import br.com.tiefenbarher.bora.domain.model.AppShift
 import br.com.tiefenbarher.bora.presentation.view_model.BoraViewModel
@@ -83,9 +84,9 @@ class RetornoFragment : Fragment() {
 
                 viewModel.setCurrentShift(localCurrentShift)
                 viewModel.updateShift(localCurrentShift)
-//                val action = EntradaFragmentDirections
-//                    .actionEntradaFragmentToAlmocoFragment()
-//                view.findNavController().navigate(action)
+                val action = RetornoFragmentDirections
+                    .actionRetornoFragmentToSaidaFragment()
+                view.findNavController().navigate(action)
             }
         }
 
