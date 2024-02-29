@@ -56,7 +56,7 @@ class AlmocoFragment : Fragment() {
                         hourFormatted = "0$hourFormatted"
                     }
                     var minuteFormatted = "" + minute
-                    if (hourOfDay < 10) {
+                    if (minute < 10) {
                         minuteFormatted = "0$minuteFormatted"
                     }
                     binding.tvTimeTelaAlmocoInicial.text = "$hourFormatted:$minuteFormatted"

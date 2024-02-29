@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 class SaidaFragment : Fragment() {
     private var _binding: FragmentSaidaBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: BoraViewModel by activityViewModel()
+    private val boraViewModel: BoraViewModel by activityViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +24,7 @@ class SaidaFragment : Fragment() {
         // Inflate the layout for this fragment
 
         binding.apply {
-            viewModel = viewModel
+            viewModel = boraViewModel
             resumoEntrada.setOnClickListener {
                 val action = SaidaFragmentDirections
                     .actionSaidaFragmentToEntradaFragment()
@@ -40,7 +40,14 @@ class SaidaFragment : Fragment() {
                     .actionSaidaFragmentToRetornoFragment()
                 view.findNavController().navigate(action)
             }
+            btStartOver.setOnClickListener {
+                boraViewModel.startOver()
+                val action = SaidaFragmentDirections
+                    .actionSaidaFragmentToHomeFragment()
+                view.findNavController().navigate(action)
+            }
         }
+        boraViewModel.calculateExit()
 
         return view
     }
