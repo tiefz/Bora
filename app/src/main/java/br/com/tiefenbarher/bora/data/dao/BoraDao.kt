@@ -24,8 +24,6 @@ interface BoraDao {
     @Delete
     suspend fun deleteShift(shift: LocalShift)
 
-    //todo - getShiftById
-
     @Query("SELECT * FROM interval")
     fun getAllIntervals(): List<Interval>
 

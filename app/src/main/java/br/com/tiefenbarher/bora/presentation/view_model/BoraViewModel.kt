@@ -59,7 +59,6 @@ class BoraViewModel(
 
     val shifts: LiveData<List<LocalShift>> = repository.getAllShifts().asLiveData()
 
-    var horario = "00:00"
     private val _currentShift = MutableStateFlow(
         AppShift(
             1L, LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now(),

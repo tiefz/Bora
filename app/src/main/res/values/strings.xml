@@ -6,6 +6,5 @@
     <string name="description_start_button">Botão start</string>
     <string name="tv_horario_calculado">O último horário de saída calculado foi:</string>
     <string name="calcular">Calcular</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zero_hour">00:00</string>
 </resources>

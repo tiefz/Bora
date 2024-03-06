@@ -61,10 +61,11 @@
                 app:layout_constraintTop_toBottomOf="@id/ib_clock_start" />
 
             <TextView
+                android:id="@+id/tv_last_calculated_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="@{viewmodel.horario}"
+                android:text="@string/zero_hour"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"

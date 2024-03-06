@@ -1,5 +1,6 @@
 package br.com.tiefenbarher.bora.presentation.ui.navigation
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import br.com.tiefenbarher.bora.R
 import br.com.tiefenbarher.bora.databinding.FragmentHomeBinding
 import br.com.tiefenbarher.bora.domain.model.AppShift
 import br.com.tiefenbarher.bora.domain.model.repository.BoraRepository
@@ -20,6 +22,8 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+
+private const val END_TIME = "end_time"
 
 class HomeFragment : Fragment() {
 
@@ -35,6 +39,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.viewmodel = viewModel
         val view = binding.root
+
+        getPrefs()
 
         viewModel.shifts.observe(viewLifecycleOwner, Observer { shifts ->
             if (shifts.isNotEmpty()) {
@@ -80,7 +86,14 @@ class HomeFragment : Fragment() {
                 view.findNavController().navigate(action)
             }
         }
+        // TODO: Criar dropdown da carga horaria
         return view
+    }
+
+    private fun getPrefs() {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        binding.tvLastCalculatedTime.text =
+            sharedPref.getString(END_TIME, getString(R.string.zero_hour))
     }
 
     override fun onDestroy() {
