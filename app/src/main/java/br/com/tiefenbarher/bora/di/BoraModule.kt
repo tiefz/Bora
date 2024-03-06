@@ -14,7 +14,8 @@ val boraModule = module {
             get(),
             BoraDatabase::class.java,
             "BoraDatabase"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
     }
     single {
         get<BoraDatabase>().boraDao()

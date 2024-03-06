@@ -10,7 +10,7 @@ import android.widget.TimePicker
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import br.com.tiefenbarher.bora.databinding.FragmentAlmocoBinding
+import br.com.tiefenbarher.bora.databinding.FragmentRetornoBinding
 import br.com.tiefenbarher.bora.domain.model.AppShift
 import br.com.tiefenbarher.bora.presentation.view_model.BoraViewModel
 import kotlinx.coroutines.launch
@@ -20,8 +20,8 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
-class AlmocoFragment : Fragment() {
-    private var _binding: FragmentAlmocoBinding? = null
+class RetornoFragment : Fragment() {
+    private var _binding: FragmentRetornoBinding? = null
     private val binding get() = _binding!!
     private val viewModel: BoraViewModel by activityViewModel()
 
@@ -29,7 +29,7 @@ class AlmocoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAlmocoBinding.inflate(inflater, container, false)
+        _binding = FragmentRetornoBinding.inflate(inflater, container, false)
         val view = binding.root
 
         lifecycleScope.launch {
@@ -38,8 +38,8 @@ class AlmocoFragment : Fragment() {
                     "TempoShift",
                     "currentshift do viewmodel na tela do almoço = ${currentShift.id}"
                 )
-                binding.tvTimeTelaAlmocoInicial.text =
-                    currentShift.lunch.format(DateTimeFormatter.ofPattern("HH:mm"))
+                binding.tvTimeTelaAlmocoFinal.text =
+                    currentShift.lunchEnd.format(DateTimeFormatter.ofPattern("HH:mm"))
             }
         }
 
@@ -59,24 +59,24 @@ class AlmocoFragment : Fragment() {
                     if (minute < 10) {
                         minuteFormatted = "0$minuteFormatted"
                     }
-                    binding.tvTimeTelaAlmocoInicial.text = "$hourFormatted:$minuteFormatted"
+                    binding.tvTimeTelaAlmocoFinal.text = "$hourFormatted:$minuteFormatted"
                 }
             }, hour, minute, true)
 
         binding.apply {
-            ibLunchStart.setOnClickListener {
+            ibLunchEnd.setOnClickListener {
                 timePicker.show()
             }
-            btNavigateRetorno.setOnClickListener {
+            btNavigateEnd.setOnClickListener {
                 val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
-                val localTime = LocalTime.parse(binding.tvTimeTelaAlmocoInicial.text, timeFormatter)
+                val localTime = LocalTime.parse(binding.tvTimeTelaAlmocoFinal.text, timeFormatter)
                 val currentDate = LocalDateTime.now().toLocalDate()
                 val localDateTime = LocalDateTime.of(currentDate, localTime)
                 val localCurrentShift = AppShift(
                     id = viewModel.currentShift.value.id,
                     start = viewModel.currentShift.value.start,
-                    lunch = localDateTime,
-                    lunchEnd = viewModel.currentShift.value.lunchEnd,
+                    lunch = viewModel.currentShift.value.lunch,
+                    lunchEnd = localDateTime,
                     pauses = viewModel.currentShift.value.pauses,
                     end = viewModel.currentShift.value.end,
                     isFinished = viewModel.currentShift.value.isFinished
@@ -84,8 +84,8 @@ class AlmocoFragment : Fragment() {
 
                 viewModel.setCurrentShift(localCurrentShift)
                 viewModel.updateShift(localCurrentShift)
-                val action = AlmocoFragmentDirections
-                    .actionAlmocoFragmentToRetornoFragment()
+                val action = RetornoFragmentDirections
+                    .actionRetornoFragmentToSaidaFragment()
                 view.findNavController().navigate(action)
             }
         }

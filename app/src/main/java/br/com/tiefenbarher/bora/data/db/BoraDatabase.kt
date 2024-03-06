@@ -8,7 +8,7 @@ import br.com.tiefenbarher.bora.data.model.Interval
 import br.com.tiefenbarher.bora.data.model.LocalShift
 import br.com.tiefenbarher.bora.presentation.utils.Converter
 
-@Database(entities = [Interval::class, LocalShift::class], version = 2)
+@Database(entities = [Interval::class, LocalShift::class], version = 3)
 @TypeConverters(Converter::class)
 abstract class BoraDatabase : RoomDatabase() {
     abstract fun boraDao(): BoraDao

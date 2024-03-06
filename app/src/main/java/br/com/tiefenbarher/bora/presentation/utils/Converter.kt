@@ -21,8 +21,12 @@ class Converter {
     @TypeConverter
     fun fromString(value: String?): List<LocalDateTime>? {
         return value?.let {
-            it.split(",").map { timestamp ->
-                LocalDateTime.parse(timestamp, formatter)
+            if (!it.isNullOrEmpty()) {
+                it.split(",").map { timestamp ->
+                    LocalDateTime.parse(timestamp, formatter)
+                }
+            } else {
+                emptyList()
             }
         }
     }
@@ -33,6 +37,4 @@ class Converter {
             timestamp.format(formatter)
         }
     }
-
-
 }
